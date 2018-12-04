@@ -1,0 +1,62 @@
+03:43:11,912 ERROR [AbstractKernelController] Error installing to Instantiated: name=StandardBindings state=Described
+java.lang.IllegalArgumentException: Wrong arguments. new for target java.lang.reflect.Constructor expected=[int] actual=[java.util.HashSet]
+        at org.jboss.reflect.plugins.introspection.ReflectionUtils.handleErrors(ReflectionUtils.java:395)
+        at org.jboss.reflect.plugins.introspection.ReflectionUtils.newInstance(ReflectionUtils.java:153)
+        at org.jboss.reflect.plugins.introspection.ReflectConstructorInfoImpl.newInstance(ReflectConstructorInfoImpl.java:106)
+        at org.jboss.joinpoint.plugins.BasicConstructorJoinPoint.dispatch(BasicConstructorJoinPoint.java:80)
+        at org.jboss.aop.microcontainer.integration.AOPConstructorJoinpoint.createTarget(AOPConstructorJoinpoint.java:276)
+        at org.jboss.aop.microcontainer.integration.AOPConstructorJoinpoint.dispatch(AOPConstructorJoinpoint.java:97)
+        at org.jboss.kernel.plugins.dependency.KernelControllerContextAction$JoinpointDispatchWrapper.execute(KernelControllerContextAction.java:241)
+        at org.jboss.kernel.plugins.dependency.ExecutionWrapper.execute(ExecutionWrapper.java:47)
+        at org.jboss.kernel.plugins.dependency.KernelControllerContextAction.dispatchExecutionWrapper(KernelControllerContextAction.java:109)
+        at org.jboss.kernel.plugins.dependency.KernelControllerContextAction.dispatchJoinPoint(KernelControllerContextAction.java:70)
+        at org.jboss.kernel.plugins.dependency.InstantiateAction.installActionInternal(InstantiateAction.java:66)
+        at org.jboss.kernel.plugins.dependency.InstallsAwareAction.installAction(InstallsAwareAction.java:54)
+        at org.jboss.kernel.plugins.dependency.InstallsAwareAction.installAction(InstallsAwareAction.java:42)
+        at org.jboss.dependency.plugins.action.SimpleControllerContextAction.simpleInstallAction(SimpleControllerContextAction.java:62)
+        at org.jboss.dependency.plugins.action.AccessControllerContextAction.install(AccessControllerContextAction.java:71)
+        at org.jboss.dependency.plugins.AbstractControllerContextActions.install(AbstractControllerContextActions.java:51)
+        at org.jboss.dependency.plugins.AbstractControllerContext.install(AbstractControllerContext.java:348)
+        at org.jboss.dependency.plugins.AbstractController.install(AbstractController.java:1598)
+        at org.jboss.dependency.plugins.AbstractController.incrementState(AbstractController.java:934)
+        at org.jboss.dependency.plugins.AbstractController.resolveContexts(AbstractController.java:1062)
+        at org.jboss.dependency.plugins.AbstractController.resolveContexts(AbstractController.java:984)
+        at org.jboss.dependency.plugins.AbstractController.install(AbstractController.java:774)
+        at org.jboss.dependency.plugins.AbstractController.install(AbstractController.java:540)
+        at org.jboss.kernel.plugins.deployment.AbstractKernelDeployer.deployBean(AbstractKernelDeployer.java:331)
+        at org.jboss.kernel.plugins.deployment.AbstractKernelDeployer.deployBeans(AbstractKernelDeployer.java:309)
+        at org.jboss.kernel.plugins.deployment.AbstractKernelDeployer.deploy(AbstractKernelDeployer.java:130)
+        at org.jboss.kernel.plugins.deployment.BasicKernelDeployer.deploy(BasicKernelDeployer.java:76)
+        at org.jboss.bootstrap.microcontainer.TempBasicXMLDeployer.deploy(TempBasicXMLDeployer.java:91)
+        at org.jboss.bootstrap.microcontainer.TempBasicXMLDeployer.deploy(TempBasicXMLDeployer.java:161)
+        at org.jboss.bootstrap.microcontainer.ServerImpl.doStart(ServerImpl.java:144)
+        at org.jboss.bootstrap.AbstractServerImpl.start(AbstractServerImpl.java:394)
+        at org.jboss.Main.boot(Main.java:209)
+        at org.jboss.Main$1.run(Main.java:547)
+        at java.lang.Thread.run(Thread.java:724)
+03:43:12,421 INFO  [ProfileServiceImpl] Loading profile: default from: org.jboss.system.server.profileservice.repository.SerializableDeploymentRepository@560d91(root=/root/Desktop/jboss-5.0.0.GA/server, key=org.jboss.profileservice.spi.ProfileKey@143b82c3[domain=default,server=default,name=default])
+03:43:12,423 INFO  [ProfileImpl] Using repository:org.jboss.system.server.profileservice.repository.SerializableDeploymentRepository@560d91(root=/root/Desktop/jboss-5.0.0.GA/server, key=org.jboss.profileservice.spi.ProfileKey@143b82c3[domain=default,server=default,name=default])
+03:43:12,424 INFO  [ProfileServiceImpl] Loaded profile: ProfileImpl@21b73a{key=org.jboss.profileservice.spi.ProfileKey@143b82c3[domain=default,server=default,name=default]}
+Failed to boot JBoss:
+java.lang.IllegalStateException: Incompletely deployed:
+
+*** DEPLOYMENTS IN ERROR: Name -> Error
+StandardBindings -> java.lang.IllegalArgumentException: Wrong arguments. new for target java.lang.reflect.Constructor expected=[int] actual=[java.util.HashSet]
+
+*** DEPLOYMENTS MISSING DEPENDENCIES: Name -> Dependency{Required State:Actual State}
+SystemPropertyBinder#1 -> ServiceBindingManager{Installed:Described}
+ServiceBindingManager -> ServiceBindingStore{Installed:Instantiated}
+SystemPropertyBinder -> SystemPropertyBinder#1{Installed:Described}
+ServiceBindingStore -> StandardBindings{Installed:**ERROR**}
+
+        at org.jboss.kernel.plugins.deployment.AbstractKernelDeployer.internalValidate(AbstractKernelDeployer.java:290)
+        at org.jboss.kernel.plugins.deployment.AbstractKernelDeployer.validate(AbstractKernelDeployer.java:174)
+        at org.jboss.bootstrap.microcontainer.ServerImpl.doStart(ServerImpl.java:148)
+        at org.jboss.bootstrap.AbstractServerImpl.start(AbstractServerImpl.java:394)
+        at org.jboss.Main.boot(Main.java:209)
+        at org.jboss.Main$1.run(Main.java:547)
+        at java.lang.Thread.run(Thread.java:724)
+03:43:13,632 INFO  [ServerImpl] Runtime shutdown hook called, forceHalt: true
+03:43:13,638 INFO  [ServerImpl] Shutdown complete
+Shutdown complete
+Halting VM
